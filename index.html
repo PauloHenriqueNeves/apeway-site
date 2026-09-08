@@ -3,24 +3,571 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ApêWay</title>
+
+    <title>ApêWay — O imóvel que se encaixa com você.</title>
+
+    <meta
+        name="description"
+        content="ApêWay — plataforma para descobrir imóveis e conectar pessoas às opções que combinam com elas."
+    >
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: #ffffff;
+            color: #111111;
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        header {
+            width: 100%;
+            border-bottom: 1px solid #eeeeee;
+            background: #ffffff;
+        }
+
+        .header-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 18px 24px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: #050062;
+            letter-spacing: -0.5px;
+        }
+
+        nav {
+            display: flex;
+            gap: 22px;
+            align-items: center;
+        }
+
+        nav a {
+            font-size: 14px;
+            font-weight: 500;
+            color: #333333;
+            transition: 0.2s;
+        }
+
+        nav a:hover {
+            color: #0059FF;
+        }
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            background: #050062;
+            color: #ffffff;
+        }
+
+        .hero-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 90px 24px;
+
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .hero h1 {
+            max-width: 720px;
+            font-size: 44px;
+            line-height: 1.15;
+            font-weight: 700;
+            letter-spacing: -1px;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            max-width: 620px;
+            font-size: 18px;
+            color: #eeeeee;
+            margin-bottom: 32px;
+        }
+
+        .hero-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            background: #ffffff;
+            color: #050062;
+
+            padding: 14px 24px;
+            border-radius: 12px;
+
+            font-size: 16px;
+            font-weight: 500;
+
+            transition: 0.2s;
+        }
+
+        .hero-button:hover {
+            transform: translateY(-1px);
+        }
+
+        /* =========================
+           DOCUMENTOS
+        ========================= */
+
+        .documents {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 70px 24px;
+        }
+
+        .documents-header {
+            margin-bottom: 32px;
+        }
+
+        .documents h2 {
+            font-size: 28px;
+            font-weight: 700;
+            color: #050062;
+            margin-bottom: 8px;
+        }
+
+        .documents-header p {
+            font-size: 16px;
+            color: #666666;
+        }
+
+        .documents-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .document-card {
+            border: 1px solid #e8e8e8;
+            border-radius: 16px;
+            padding: 26px;
+            background: #ffffff;
+
+            transition: 0.2s;
+        }
+
+        .document-card:hover {
+            border-color: #0059FF;
+            transform: translateY(-2px);
+        }
+
+        .document-icon {
+            width: 44px;
+            height: 44px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 12px;
+            background: #f1f4ff;
+            color: #0059FF;
+
+            font-size: 20px;
+
+            margin-bottom: 18px;
+        }
+
+        .document-card h3 {
+            font-size: 20px;
+            margin-bottom: 8px;
+            color: #111111;
+        }
+
+        .document-card p {
+            font-size: 14px;
+            color: #666666;
+            margin-bottom: 18px;
+        }
+
+        .document-link {
+            color: #0059FF;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        /* =========================
+           SOBRE
+        ========================= */
+
+        .about {
+            background: #f8f8f8;
+        }
+
+        .about-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 70px 24px;
+        }
+
+        .about h2 {
+            color: #050062;
+            font-size: 28px;
+            margin-bottom: 16px;
+        }
+
+        .about p {
+            max-width: 760px;
+            font-size: 16px;
+            color: #444444;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            background: #050062;
+            color: #ffffff;
+        }
+
+        .footer-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 24px;
+
+            display: flex;
+            justify-content: space-between;
+            gap: 30px;
+        }
+
+        .footer-brand {
+            max-width: 400px;
+        }
+
+        .footer-brand h3 {
+            font-size: 22px;
+            margin-bottom: 8px;
+        }
+
+        .footer-brand p {
+            font-size: 14px;
+            color: #dddddd;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .footer-links a {
+            font-size: 14px;
+            color: #ffffff;
+        }
+
+        .footer-links a:hover {
+            color: #ffffff;
+            text-decoration: underline;
+        }
+
+        .copyright {
+            border-top: 1px solid rgba(255,255,255,0.15);
+            padding: 18px 24px;
+            text-align: center;
+            font-size: 12px;
+            color: #cccccc;
+        }
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 700px) {
+
+            nav {
+                display: none;
+            }
+
+            .hero-container {
+                padding: 70px 24px;
+            }
+
+            .hero h1 {
+                font-size: 34px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .documents-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-container {
+                flex-direction: column;
+            }
+        }
+
+    </style>
 </head>
 
 <body>
 
-    <h1>ApêWay</h1>
+    <!-- HEADER -->
 
-    <p>Encontre seu próximo lar.</p>
+    <header>
 
-    <h2>Documentos</h2>
+        <div class="header-container">
 
-    <ul>
-        <li><a href="privacidade.html">Política de Privacidade</a></li>
-        <li><a href="termos.html">Termos de Uso</a></li>
-        <li><a href="exclusao-de-conta.html">Exclusão de Conta</a></li>
-    </ul>
+            <a href="index.html" class="logo">
+                ApêWay
+            </a>
 
-    <p>Contato: contatoapeway@gmail.com</p>
+            <nav>
+                <a href="#sobre">Sobre</a>
+                <a href="#documentos">Documentos</a>
+                <a href="privacidade.html">Privacidade</a>
+                <a href="termos.html">Termos</a>
+            </nav>
+
+        </div>
+
+    </header>
+
+
+    <!-- HERO -->
+
+    <main>
+
+        <section class="hero">
+
+            <div class="hero-container">
+
+                <h1>
+                    O imóvel que se encaixa com você.
+                </h1>
+
+                <p>
+                    O ApêWay conecta pessoas a imóveis de forma
+                    simples, moderna e organizada.
+                </p>
+
+                <a
+                    href="#documentos"
+                    class="hero-button"
+                >
+                    Conheça o ApêWay
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- DOCUMENTOS -->
+
+        <section
+            class="documents"
+            id="documentos"
+        >
+
+            <div class="documents-header">
+
+                <h2>
+                    Informações importantes
+                </h2>
+
+                <p>
+                    Consulte os documentos e informações oficiais do ApêWay.
+                </p>
+
+            </div>
+
+
+            <div class="documents-grid">
+
+                <a
+                    href="privacidade.html"
+                    class="document-card"
+                >
+
+                    <div class="document-icon">
+                        🔒
+                    </div>
+
+                    <h3>
+                        Política de Privacidade
+                    </h3>
+
+                    <p>
+                        Saiba como tratamos os dados pessoais
+                        utilizados pela plataforma.
+                    </p>
+
+                    <span class="document-link">
+                        Ler política →
+                    </span>
+
+                </a>
+
+
+                <a
+                    href="termos.html"
+                    class="document-card"
+                >
+
+                    <div class="document-icon">
+                        ✓
+                    </div>
+
+                    <h3>
+                        Termos de Uso
+                    </h3>
+
+                    <p>
+                        Conheça as regras e condições para utilização
+                        do ApêWay.
+                    </p>
+
+                    <span class="document-link">
+                        Ler termos →
+                    </span>
+
+                </a>
+
+
+                <a
+                    href="exclusao-de-conta.html"
+                    class="document-card"
+                >
+
+                    <div class="document-icon">
+                        ×
+                    </div>
+
+                    <h3>
+                        Exclusão de Conta
+                    </h3>
+
+                    <p>
+                        Consulte as informações para solicitar
+                        a exclusão da sua conta.
+                    </p>
+
+                    <span class="document-link">
+                        Solicitar exclusão →
+                    </span>
+
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- SOBRE -->
+
+        <section
+            class="about"
+            id="sobre"
+        >
+
+            <div class="about-container">
+
+                <h2>
+                    Sobre o ApêWay
+                </h2>
+
+                <p>
+                    O ApêWay é uma plataforma voltada à divulgação
+                    e descoberta de imóveis, facilitando o contato
+                    entre pessoas interessadas em encontrar ou
+                    anunciar uma oportunidade imobiliária.
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <div class="footer-container">
+
+            <div class="footer-brand">
+
+                <h3>
+                    ApêWay
+                </h3>
+
+                <p>
+                    O imóvel que se encaixa com você.
+                </p>
+
+            </div>
+
+
+            <div class="footer-links">
+
+                <a href="privacidade.html">
+                    Política de Privacidade
+                </a>
+
+                <a href="termos.html">
+                    Termos de Uso
+                </a>
+
+                <a href="exclusao-de-conta.html">
+                    Exclusão de Conta
+                </a>
+
+                <a href="mailto:contatoapeway@gmail.com">
+                    contatoapeway@gmail.com
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="copyright">
+
+            © 2026 ApêWay. Todos os direitos reservados.
+
+        </div>
+
+    </footer>
 
 </body>
 </html>
