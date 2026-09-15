@@ -3,151 +3,834 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="robots" content="noindex">
+
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="theme-color" content="#050062">
+
     <title>Redefinir senha — ApêWay</title>
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
+        rel="stylesheet"
+    >
+
     <style>
-        * { box-sizing: border-box; }
+        :root {
+            --primary: #050062;
+            --secondary: #0059FF;
+            --text: #161616;
+            --text-secondary: #5c6270;
+            --background: #f5f7fb;
+            --surface: #ffffff;
+            --border: #e2e5ec;
+            --success-bg: #eefaf1;
+            --success-text: #146c35;
+            --success-border: #b9ebc8;
+            --error-bg: #fff1f1;
+            --error-text: #a11212;
+            --error-border: #f2c3c3;
+            --shadow: 0 12px 36px rgba(5, 0, 98, 0.08);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            align-items: center;
-            background: #f5f6fa;
-            color: #161616;
-            display: flex;
-            font-family: 'Roboto', sans-serif;
-            justify-content: center;
-            line-height: 1.5;
             margin: 0;
             min-height: 100vh;
-            padding: 24px;
+            background: var(--background);
+            color: var(--text);
+            font-family: "Roboto", sans-serif;
+            line-height: 1.5;
         }
-        main { max-width: 460px; width: 100%; }
-        .brand { color: #050062; display: block; font-size: 26px; font-weight: 700; margin-bottom: 26px; text-align: center; text-decoration: none; }
-        .card { background: #fff; border: 1px solid #e3e5ed; border-radius: 18px; box-shadow: 0 8px 24px rgba(5, 0, 98, .08); padding: 30px; }
-        h1 { color: #050062; font-size: 28px; line-height: 1.2; margin: 0 0 12px; }
-        p { color: #535966; margin: 0 0 24px; }
-        label { display: block; font-size: 14px; font-weight: 700; margin: 18px 0 8px; }
-        input { border: 1px solid #cdd2dd; border-radius: 10px; font: inherit; min-height: 50px; padding: 12px; width: 100%; }
-        input:focus { border-color: #050062; outline: 2px solid rgba(5, 0, 98, .12); }
-        button { background: #050062; border: 0; border-radius: 10px; color: #fff; cursor: pointer; font: inherit; font-weight: 700; margin-top: 24px; min-height: 50px; width: 100%; }
-        button:disabled { cursor: wait; opacity: .7; }
-        .message { border-radius: 10px; display: none; margin-top: 20px; padding: 12px; }
-        .message.error { background: #fff0f0; color: #a11212; display: block; }
-        .message.success { background: #eefaf1; color: #146c35; display: block; }
-        #form { display: none; }
-        .support { font-size: 14px; margin-top: 24px; text-align: center; }
-        .support a { color: #050062; font-weight: 700; }
+
+        a {
+            color: inherit;
+        }
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        header {
+            background: rgba(255, 255, 255, 0.96);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .header-container {
+            align-items: center;
+            display: flex;
+            justify-content: space-between;
+            margin: 0 auto;
+            max-width: 1180px;
+            min-height: 72px;
+            padding: 0 24px;
+        }
+
+        .logo {
+            color: var(--primary);
+            font-size: 26px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            text-decoration: none;
+        }
+
+        .back-link {
+            align-items: center;
+            color: var(--text-secondary);
+            display: inline-flex;
+            font-size: 14px;
+            font-weight: 500;
+            gap: 7px;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .back-link:hover {
+            color: var(--primary);
+        }
+
+        .back-icon {
+            font-size: 18px;
+            line-height: 1;
+        }
+
+        /* =========================
+           MAIN
+        ========================= */
+
+        main {
+            align-items: center;
+            display: flex;
+            justify-content: center;
+            min-height: calc(100vh - 145px);
+            padding: 64px 24px;
+        }
+
+        .content {
+            max-width: 480px;
+            width: 100%;
+        }
+
+        .intro {
+            margin-bottom: 28px;
+            text-align: center;
+        }
+
+        .security-icon {
+            align-items: center;
+            background: #eef2ff;
+            border-radius: 50%;
+            color: var(--primary);
+            display: flex;
+            font-size: 25px;
+            height: 58px;
+            justify-content: center;
+            margin: 0 auto 20px;
+            width: 58px;
+        }
+
+        .intro h1 {
+            color: var(--primary);
+            font-size: 32px;
+            font-weight: 700;
+            letter-spacing: -0.6px;
+            line-height: 1.2;
+            margin: 0 0 12px;
+        }
+
+        .intro p {
+            color: var(--text-secondary);
+            font-size: 16px;
+            margin: 0 auto;
+            max-width: 410px;
+        }
+
+        /* =========================
+           CARD
+        ========================= */
+
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            box-shadow: var(--shadow);
+            padding: 32px;
+        }
+
+        .loading {
+            align-items: center;
+            color: var(--text-secondary);
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            justify-content: center;
+            padding: 22px 0;
+            text-align: center;
+        }
+
+        .spinner {
+            animation: spin 0.9s linear infinite;
+            border: 3px solid #e4e7ee;
+            border-radius: 50%;
+            border-top-color: var(--secondary);
+            height: 30px;
+            width: 30px;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* =========================
+           FORM
+        ========================= */
+
+        #form {
+            display: none;
+        }
+
+        .form-intro {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin: 0 0 24px;
+        }
+
+        .field {
+            margin-bottom: 20px;
+        }
+
+        label {
+            color: var(--text);
+            display: block;
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        input {
+            background: #fff;
+            border: 1px solid #cdd2dd;
+            border-radius: 10px;
+            color: var(--text);
+            font-family: inherit;
+            font-size: 16px;
+            min-height: 50px;
+            outline: none;
+            padding: 12px 14px;
+            transition:
+                border-color 0.2s ease,
+                box-shadow 0.2s ease;
+            width: 100%;
+        }
+
+        input::placeholder {
+            color: #9aa0ad;
+        }
+
+        input:focus {
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 3px rgba(0, 89, 255, 0.10);
+        }
+
+        .password-help {
+            color: var(--text-secondary);
+            font-size: 12px;
+            margin-top: 7px;
+        }
+
+        button {
+            align-items: center;
+            background: var(--primary);
+            border: 0;
+            border-radius: 10px;
+            color: #fff;
+            cursor: pointer;
+            display: flex;
+            font-family: inherit;
+            font-size: 16px;
+            font-weight: 700;
+            justify-content: center;
+            min-height: 52px;
+            padding: 12px 18px;
+            transition:
+                background 0.2s ease,
+                transform 0.15s ease,
+                opacity 0.2s ease;
+            width: 100%;
+        }
+
+        button:hover:not(:disabled) {
+            background: #08008c;
+        }
+
+        button:active:not(:disabled) {
+            transform: translateY(1px);
+        }
+
+        button:disabled {
+            cursor: wait;
+            opacity: 0.7;
+        }
+
+        /* =========================
+           MESSAGES
+        ========================= */
+
+        .message {
+            align-items: flex-start;
+            border: 1px solid transparent;
+            border-radius: 12px;
+            display: none;
+            font-size: 14px;
+            gap: 10px;
+            line-height: 1.5;
+            margin-top: 20px;
+            padding: 13px 14px;
+        }
+
+        .message-icon {
+            flex: 0 0 auto;
+            font-size: 17px;
+            font-weight: 700;
+            line-height: 1.4;
+        }
+
+        .message.error {
+            background: var(--error-bg);
+            border-color: var(--error-border);
+            color: var(--error-text);
+            display: flex;
+        }
+
+        .message.success {
+            background: var(--success-bg);
+            border-color: var(--success-border);
+            color: var(--success-text);
+            display: flex;
+        }
+
+        /* =========================
+           SUPPORT
+        ========================= */
+
+        .support {
+            color: var(--text-secondary);
+            font-size: 14px;
+            margin: 22px 0 0;
+            text-align: center;
+        }
+
+        .support a {
+            color: var(--primary);
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .support a:hover {
+            text-decoration: underline;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            border-top: 1px solid var(--border);
+            background: #fff;
+        }
+
+        .footer-container {
+            align-items: center;
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin: 0 auto;
+            max-width: 1180px;
+            min-height: 72px;
+            padding: 18px 24px;
+        }
+
+        .footer-container a {
+            color: var(--text-secondary);
+            font-size: 13px;
+            text-decoration: none;
+        }
+
+        .footer-container a:hover {
+            color: var(--primary);
+        }
+
+        .footer-divider {
+            color: #c7cbd4;
+            font-size: 12px;
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 600px) {
+            .header-container {
+                min-height: 64px;
+                padding: 0 18px;
+            }
+
+            .logo {
+                font-size: 24px;
+            }
+
+            .back-link {
+                font-size: 13px;
+            }
+
+            main {
+                min-height: calc(100vh - 136px);
+                padding: 42px 18px;
+            }
+
+            .intro {
+                margin-bottom: 24px;
+            }
+
+            .intro h1 {
+                font-size: 28px;
+            }
+
+            .intro p {
+                font-size: 15px;
+            }
+
+            .card {
+                border-radius: 16px;
+                padding: 24px 20px;
+            }
+
+            .footer-container {
+                gap: 12px;
+                padding: 18px;
+            }
+
+            .footer-container a {
+                font-size: 12px;
+            }
+        }
     </style>
 </head>
+
 <body>
+
+    <!-- =========================
+         HEADER
+    ========================== -->
+
+    <header>
+        <div class="header-container">
+
+            <a class="logo" href="index.html">
+                ApêWay
+            </a>
+
+            <a class="back-link" href="index.html">
+                <span class="back-icon" aria-hidden="true">‹</span>
+                Voltar ao início
+            </a>
+
+        </div>
+    </header>
+
+
+    <!-- =========================
+         MAIN
+    ========================== -->
+
     <main>
-        <a class="brand" href="index.html">ApêWay</a>
-        <section class="card" aria-live="polite">
-            <h1>Redefinir senha</h1>
-            <p id="intro">Validando seu link de recuperação...</p>
 
-            <form id="form">
-                <label for="password">Nova senha</label>
-                <input id="password" type="password" autocomplete="new-password" minlength="6" required>
+        <div class="content">
 
-                <label for="confirmation">Confirmar nova senha</label>
-                <input id="confirmation" type="password" autocomplete="new-password" minlength="6" required>
+            <div class="intro">
 
-                <button id="submit" type="submit">Salvar nova senha</button>
-            </form>
+                <div class="security-icon" aria-hidden="true">
+                    🔐
+                </div>
 
-            <div id="message" class="message" role="alert"></div>
-        </section>
-        <p class="support">Precisa de ajuda? <a href="mailto:contatoapeway@gmail.com">Fale com o suporte</a>.</p>
+                <h1>Redefinir senha</h1>
+
+                <p id="intro">
+                    Validando seu link de recuperação...
+                </p>
+
+            </div>
+
+
+            <section class="card" aria-live="polite">
+
+                <!-- Loading -->
+
+                <div id="loading" class="loading">
+
+                    <div class="spinner" aria-hidden="true"></div>
+
+                    <span>
+                        Verificando seu link de recuperação...
+                    </span>
+
+                </div>
+
+
+                <!-- Form -->
+
+                <form id="form">
+
+                    <p class="form-intro">
+                        Escolha uma nova senha para sua conta ApêWay.
+                    </p>
+
+                    <div class="field">
+
+                        <label for="password">
+                            Nova senha
+                        </label>
+
+                        <input
+                            id="password"
+                            type="password"
+                            autocomplete="new-password"
+                            minlength="6"
+                            required
+                            placeholder="Digite sua nova senha"
+                        >
+
+                        <div class="password-help">
+                            A senha deve ter pelo menos 6 caracteres.
+                        </div>
+
+                    </div>
+
+
+                    <div class="field">
+
+                        <label for="confirmation">
+                            Confirmar nova senha
+                        </label>
+
+                        <input
+                            id="confirmation"
+                            type="password"
+                            autocomplete="new-password"
+                            minlength="6"
+                            required
+                            placeholder="Digite a senha novamente"
+                        >
+
+                    </div>
+
+
+                    <button id="submit" type="submit">
+                        Salvar nova senha
+                    </button>
+
+                </form>
+
+
+                <!-- Message -->
+
+                <div
+                    id="message"
+                    class="message"
+                    role="alert"
+                    aria-live="assertive"
+                ></div>
+
+            </section>
+
+
+            <p class="support">
+                Precisa de ajuda?
+                <a href="mailto:contatoapeway@gmail.com">
+                    Fale com o suporte
+                </a>.
+            </p>
+
+        </div>
+
     </main>
 
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <footer>
+
+        <div class="footer-container">
+
+            <a href="privacidade.html">
+                Privacidade
+            </a>
+
+            <span class="footer-divider">•</span>
+
+            <a href="termos.html">
+                Termos de Uso
+            </a>
+
+            <span class="footer-divider">•</span>
+
+            <a href="exclusao-de-conta.html">
+                Exclusão de conta
+            </a>
+
+            <span class="footer-divider">•</span>
+
+            <a href="mailto:contatoapeway@gmail.com">
+                Suporte
+            </a>
+
+        </div>
+
+    </footer>
+
+
+    <!-- =========================
+         SUPABASE
+    ========================== -->
+
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
     <script>
+
         const supabaseClient = window.supabase.createClient(
             'https://krttopkvxlidjfbcbtnn.supabase.co',
             'sb_publishable_-vzsUVzn6ghKO5x6wxL7LA_S_yKx1tg',
-            { auth: { autoRefreshToken: false, detectSessionInUrl: true, persistSession: false } }
+            {
+                auth: {
+                    autoRefreshToken: false,
+                    detectSessionInUrl: true,
+                    persistSession: false
+                }
+            }
         );
+
 
         const form = document.getElementById('form');
         const intro = document.getElementById('intro');
+        const loading = document.getElementById('loading');
         const message = document.getElementById('message');
         const submit = document.getElementById('submit');
+
         let recoveryReady = false;
 
+
+        /* =========================
+           MENSAGENS
+        ========================== */
+
         function showMessage(text, type) {
-            message.textContent = text;
+
+            const icon = type === 'success' ? '✓' : '!';
+
+            message.innerHTML = `
+                <span class="message-icon" aria-hidden="true">
+                    ${icon}
+                </span>
+                <span>${text}</span>
+            `;
+
             message.className = `message ${type}`;
         }
 
+
+        /* =========================
+           FORMULÁRIO
+        ========================== */
+
         function showForm() {
+
             recoveryReady = true;
-            intro.textContent = 'Escolha uma nova senha para sua conta.';
+
+            loading.style.display = 'none';
+
+            intro.textContent =
+                'Escolha uma nova senha para sua conta ApêWay.';
+
             form.style.display = 'block';
         }
 
+
+        /* =========================
+           RECUPERAÇÃO
+        ========================== */
+
         async function initializeRecovery() {
-            const { data: { session }, error } = await supabaseClient.auth.getSession();
+
+            const {
+                data: { session },
+                error
+            } = await supabaseClient.auth.getSession();
+
+
             if (error) {
                 throw error;
             }
 
+
             if (session) {
+
                 showForm();
+
                 return;
             }
 
-            intro.textContent = 'Este link é inválido ou expirou. Solicite uma nova recuperação pelo aplicativo.';
-            showMessage('Por segurança, cada link de recuperação só pode ser usado uma vez.', 'error');
+
+            loading.style.display = 'none';
+
+            intro.textContent =
+                'Este link é inválido ou expirou. Solicite uma nova recuperação pelo aplicativo.';
+
+            showMessage(
+                'Por segurança, cada link de recuperação só pode ser usado uma vez.',
+                'error'
+            );
         }
 
-        supabaseClient.auth.onAuthStateChange((event, session) => {
-            if (event === 'PASSWORD_RECOVERY' && session) {
-                showForm();
+
+        /* =========================
+           AUTH STATE
+        ========================== */
+
+        supabaseClient.auth.onAuthStateChange(
+            (event, session) => {
+
+                if (
+                    event === 'PASSWORD_RECOVERY' &&
+                    session
+                ) {
+                    showForm();
+                }
+
             }
-        });
+        );
+
+
+        /* =========================
+           ENVIO DO FORMULÁRIO
+        ========================== */
 
         form.addEventListener('submit', async (event) => {
+
             event.preventDefault();
-            const password = document.getElementById('password').value;
-            const confirmation = document.getElementById('confirmation').value;
+
+
+            const password =
+                document.getElementById('password').value;
+
+            const confirmation =
+                document.getElementById('confirmation').value;
+
 
             if (!recoveryReady) {
-                showMessage('A sessão de recuperação não foi validada. Solicite um novo link.', 'error');
+
+                showMessage(
+                    'A sessão de recuperação não foi validada. Solicite um novo link.',
+                    'error'
+                );
+
                 return;
             }
+
 
             if (password.length < 6) {
-                showMessage('A nova senha deve ter pelo menos 6 caracteres.', 'error');
+
+                showMessage(
+                    'A nova senha deve ter pelo menos 6 caracteres.',
+                    'error'
+                );
+
                 return;
             }
 
+
             if (password !== confirmation) {
-                showMessage('As senhas precisam ser iguais.', 'error');
+
+                showMessage(
+                    'As senhas precisam ser iguais.',
+                    'error'
+                );
+
                 return;
             }
+
 
             submit.disabled = true;
             submit.textContent = 'Salvando...';
-            const { error } = await supabaseClient.auth.updateUser({ password });
+
+
+            const { error } =
+                await supabaseClient.auth.updateUser({
+                    password
+                });
+
 
             if (error) {
-                showMessage(error.message, 'error');
+
+                showMessage(
+                    error.message,
+                    'error'
+                );
+
                 submit.disabled = false;
-                submit.textContent = 'Salvar nova senha';
+                submit.textContent =
+                    'Salvar nova senha';
+
                 return;
             }
 
+
             form.style.display = 'none';
-            intro.textContent = 'Senha atualizada com sucesso.';
-            showMessage('Abra o ApêWay e entre com sua nova senha.', 'success');
+
+            intro.textContent =
+                'Sua senha foi atualizada com sucesso.';
+
+            showMessage(
+                'Senha atualizada. Abra o ApêWay e entre com sua nova senha.',
+                'success'
+            );
+
         });
 
+
+        /* =========================
+           INICIALIZAÇÃO
+        ========================== */
+
         initializeRecovery().catch(() => {
-            intro.textContent = 'Não foi possível validar este link.';
-            showMessage('Solicite uma nova recuperação pelo aplicativo.', 'error');
+
+            loading.style.display = 'none';
+
+            intro.textContent =
+                'Não foi possível validar este link.';
+
+            showMessage(
+                'Solicite uma nova recuperação pelo aplicativo.',
+                'error'
+            );
+
         });
+
     </script>
+
 </body>
 </html>
