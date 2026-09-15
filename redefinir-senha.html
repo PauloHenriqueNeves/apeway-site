@@ -11,6 +11,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
     <link
         href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
         rel="stylesheet"
@@ -25,12 +26,15 @@
             --background: #f5f7fb;
             --surface: #ffffff;
             --border: #e2e5ec;
+
             --success-bg: #eefaf1;
             --success-text: #146c35;
             --success-border: #b9ebc8;
+
             --error-bg: #fff1f1;
             --error-text: #a11212;
             --error-border: #f2c3c3;
+
             --shadow: 0 12px 36px rgba(5, 0, 98, 0.08);
         }
 
@@ -220,7 +224,16 @@
             margin-bottom: 8px;
         }
 
-        input {
+        /* =========================
+           PASSWORD INPUT
+        ========================= */
+
+        .input-wrapper {
+            position: relative;
+            width: 100%;
+        }
+
+        .input-wrapper input {
             background: #fff;
             border: 1px solid #cdd2dd;
             border-radius: 10px;
@@ -229,20 +242,71 @@
             font-size: 16px;
             min-height: 50px;
             outline: none;
-            padding: 12px 14px;
+            padding: 12px 50px 12px 14px;
             transition:
                 border-color 0.2s ease,
                 box-shadow 0.2s ease;
             width: 100%;
         }
 
-        input::placeholder {
+        .input-wrapper input::placeholder {
             color: #9aa0ad;
         }
 
-        input:focus {
+        .input-wrapper input:focus {
             border-color: var(--secondary);
             box-shadow: 0 0 0 3px rgba(0, 89, 255, 0.10);
+        }
+
+        /* =========================
+           PASSWORD TOGGLE
+        ========================= */
+
+        .password-toggle {
+            align-items: center;
+            background: transparent;
+            border: 0;
+            border-radius: 8px;
+            color: #737987;
+            cursor: pointer;
+            display: flex;
+            height: 42px;
+            justify-content: center;
+            margin: 0;
+            padding: 0;
+            position: absolute;
+            right: 5px;
+            top: 4px;
+            transition:
+                background 0.2s ease,
+                color 0.2s ease;
+            width: 42px;
+        }
+
+        .password-toggle:hover {
+            background: #f1f3f8;
+            color: var(--primary);
+        }
+
+        .password-toggle:focus {
+            background: #f1f3f8;
+            box-shadow: 0 0 0 3px rgba(0, 89, 255, 0.10);
+            color: var(--primary);
+            outline: none;
+        }
+
+        .password-toggle:active {
+            transform: none;
+        }
+
+        .password-toggle svg {
+            height: 21px;
+            pointer-events: none;
+            width: 21px;
+        }
+
+        .password-toggle .eye-closed {
+            display: none;
         }
 
         .password-help {
@@ -251,7 +315,11 @@
             margin-top: 7px;
         }
 
-        button {
+        /* =========================
+           SUBMIT BUTTON
+        ========================= */
+
+        .submit-button {
             align-items: center;
             background: var(--primary);
             border: 0;
@@ -272,15 +340,15 @@
             width: 100%;
         }
 
-        button:hover:not(:disabled) {
+        .submit-button:hover:not(:disabled) {
             background: #08008c;
         }
 
-        button:active:not(:disabled) {
+        .submit-button:active:not(:disabled) {
             transform: translateY(1px);
         }
 
-        button:disabled {
+        .submit-button:disabled {
             cursor: wait;
             opacity: 0.7;
         }
@@ -348,8 +416,8 @@
         ========================= */
 
         footer {
-            border-top: 1px solid var(--border);
             background: #fff;
+            border-top: 1px solid var(--border);
         }
 
         .footer-container {
@@ -383,6 +451,7 @@
         ========================= */
 
         @media (max-width: 600px) {
+
             .header-container {
                 min-height: 64px;
                 padding: 0 18px;
@@ -437,6 +506,7 @@
     ========================== -->
 
     <header>
+
         <div class="header-container">
 
             <a class="logo" href="index.html">
@@ -444,17 +514,26 @@
             </a>
 
             <a class="back-link" href="index.html">
-                <span class="back-icon" aria-hidden="true">‹</span>
+
+                <span
+                    class="back-icon"
+                    aria-hidden="true"
+                >
+                    ‹
+                </span>
+
                 Voltar ao início
+
             </a>
 
         </div>
+
     </header>
 
 
     <!-- =========================
          MAIN
-    ========================== -->
+    ========================= -->
 
     <main>
 
@@ -462,11 +541,16 @@
 
             <div class="intro">
 
-                <div class="security-icon" aria-hidden="true">
+                <div
+                    class="security-icon"
+                    aria-hidden="true"
+                >
                     🔐
                 </div>
 
-                <h1>Redefinir senha</h1>
+                <h1>
+                    Redefinir senha
+                </h1>
 
                 <p id="intro">
                     Validando seu link de recuperação...
@@ -475,13 +559,24 @@
             </div>
 
 
-            <section class="card" aria-live="polite">
+            <section
+                class="card"
+                aria-live="polite"
+            >
 
-                <!-- Loading -->
+                <!-- =========================
+                     LOADING
+                ========================== -->
 
-                <div id="loading" class="loading">
+                <div
+                    id="loading"
+                    class="loading"
+                >
 
-                    <div class="spinner" aria-hidden="true"></div>
+                    <div
+                        class="spinner"
+                        aria-hidden="true"
+                    ></div>
 
                     <span>
                         Verificando seu link de recuperação...
@@ -490,7 +585,9 @@
                 </div>
 
 
-                <!-- Form -->
+                <!-- =========================
+                     FORM
+                ========================== -->
 
                 <form id="form">
 
@@ -498,20 +595,93 @@
                         Escolha uma nova senha para sua conta ApêWay.
                     </p>
 
+
+                    <!-- NOVA SENHA -->
+
                     <div class="field">
 
                         <label for="password">
                             Nova senha
                         </label>
 
-                        <input
-                            id="password"
-                            type="password"
-                            autocomplete="new-password"
-                            minlength="6"
-                            required
-                            placeholder="Digite sua nova senha"
-                        >
+                        <div class="input-wrapper">
+
+                            <input
+                                id="password"
+                                type="password"
+                                autocomplete="new-password"
+                                minlength="6"
+                                required
+                                placeholder="Digite sua nova senha"
+                            >
+
+                            <button
+                                class="password-toggle"
+                                type="button"
+                                aria-label="Mostrar senha"
+                                aria-pressed="false"
+                                data-target="password"
+                            >
+
+                                <!-- Olho aberto -->
+
+                                <svg
+                                    class="eye-open"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    aria-hidden="true"
+                                >
+
+                                    <path
+                                        d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12z"
+                                    />
+
+                                    <circle
+                                        cx="12"
+                                        cy="12"
+                                        r="3"
+                                    />
+
+                                </svg>
+
+
+                                <!-- Olho fechado -->
+
+                                <svg
+                                    class="eye-closed"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    aria-hidden="true"
+                                >
+
+                                    <path d="M3 3l18 18"/>
+
+                                    <path
+                                        d="M10.6 10.6a2 2 0 0 0 2.8 2.8"
+                                    />
+
+                                    <path
+                                        d="M9.9 4.2A10.7 10.7 0 0 1 12 4c6.5 0 10 8 10 8a17.3 17.3 0 0 1-3.1 4.1"
+                                    />
+
+                                    <path
+                                        d="M6.6 6.6C3.7 8.5 2 12 2 12s3.5 8 10 8a10.8 10.8 0 0 0 4.1-.8"
+                                    />
+
+                                </svg>
+
+                            </button>
+
+                        </div>
+
 
                         <div class="password-help">
                             A senha deve ter pelo menos 6 caracteres.
@@ -520,32 +690,111 @@
                     </div>
 
 
+                    <!-- CONFIRMAR SENHA -->
+
                     <div class="field">
 
                         <label for="confirmation">
                             Confirmar nova senha
                         </label>
 
-                        <input
-                            id="confirmation"
-                            type="password"
-                            autocomplete="new-password"
-                            minlength="6"
-                            required
-                            placeholder="Digite a senha novamente"
-                        >
+                        <div class="input-wrapper">
+
+                            <input
+                                id="confirmation"
+                                type="password"
+                                autocomplete="new-password"
+                                minlength="6"
+                                required
+                                placeholder="Digite a senha novamente"
+                            >
+
+                            <button
+                                class="password-toggle"
+                                type="button"
+                                aria-label="Mostrar senha"
+                                aria-pressed="false"
+                                data-target="confirmation"
+                            >
+
+                                <!-- Olho aberto -->
+
+                                <svg
+                                    class="eye-open"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    aria-hidden="true"
+                                >
+
+                                    <path
+                                        d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12z"
+                                    />
+
+                                    <circle
+                                        cx="12"
+                                        cy="12"
+                                        r="3"
+                                    />
+
+                                </svg>
+
+
+                                <!-- Olho fechado -->
+
+                                <svg
+                                    class="eye-closed"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    aria-hidden="true"
+                                >
+
+                                    <path d="M3 3l18 18"/>
+
+                                    <path
+                                        d="M10.6 10.6a2 2 0 0 0 2.8 2.8"
+                                    />
+
+                                    <path
+                                        d="M9.9 4.2A10.7 10.7 0 0 1 12 4c6.5 0 10 8 10 8a17.3 17.3 0 0 1-3.1 4.1"
+                                    />
+
+                                    <path
+                                        d="M6.6 6.6C3.7 8.5 2 12 2 12s3.5 8 10 8a10.8 10.8 0 0 0 4.1-.8"
+                                    />
+
+                                </svg>
+
+                            </button>
+
+                        </div>
 
                     </div>
 
 
-                    <button id="submit" type="submit">
+                    <!-- BOTÃO -->
+
+                    <button
+                        id="submit"
+                        class="submit-button"
+                        type="submit"
+                    >
                         Salvar nova senha
                     </button>
 
                 </form>
 
 
-                <!-- Message -->
+                <!-- =========================
+                     MESSAGE
+                ========================== -->
 
                 <div
                     id="message"
@@ -557,11 +806,18 @@
             </section>
 
 
+            <!-- =========================
+                 SUPPORT
+            ========================== -->
+
             <p class="support">
+
                 Precisa de ajuda?
+
                 <a href="mailto:contatoapeway@gmail.com">
                     Fale com o suporte
                 </a>.
+
             </p>
 
         </div>
@@ -581,19 +837,25 @@
                 Privacidade
             </a>
 
-            <span class="footer-divider">•</span>
+            <span class="footer-divider">
+                •
+            </span>
 
             <a href="termos.html">
                 Termos de Uso
             </a>
 
-            <span class="footer-divider">•</span>
+            <span class="footer-divider">
+                •
+            </span>
 
             <a href="exclusao-de-conta.html">
                 Exclusão de conta
             </a>
 
-            <span class="footer-divider">•</span>
+            <span class="footer-divider">
+                •
+            </span>
 
             <a href="mailto:contatoapeway@gmail.com">
                 Suporte
@@ -610,11 +872,19 @@
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
+
     <script>
 
+        /* =========================
+           SUPABASE CLIENT
+        ========================= */
+
         const supabaseClient = window.supabase.createClient(
+
             'https://krttopkvxlidjfbcbtnn.supabase.co',
+
             'sb_publishable_-vzsUVzn6ghKO5x6wxL7LA_S_yKx1tg',
+
             {
                 auth: {
                     autoRefreshToken: false,
@@ -622,57 +892,163 @@
                     persistSession: false
                 }
             }
+
         );
 
 
-        const form = document.getElementById('form');
-        const intro = document.getElementById('intro');
-        const loading = document.getElementById('loading');
-        const message = document.getElementById('message');
-        const submit = document.getElementById('submit');
+        /* =========================
+           ELEMENTOS
+        ========================= */
+
+        const form =
+            document.getElementById('form');
+
+        const intro =
+            document.getElementById('intro');
+
+        const loading =
+            document.getElementById('loading');
+
+        const message =
+            document.getElementById('message');
+
+        const submit =
+            document.getElementById('submit');
+
 
         let recoveryReady = false;
 
 
         /* =========================
            MENSAGENS
-        ========================== */
+        ========================= */
 
         function showMessage(text, type) {
 
-            const icon = type === 'success' ? '✓' : '!';
+            const icon =
+                type === 'success'
+                    ? '✓'
+                    : '!';
+
 
             message.innerHTML = `
-                <span class="message-icon" aria-hidden="true">
+
+                <span
+                    class="message-icon"
+                    aria-hidden="true"
+                >
                     ${icon}
                 </span>
-                <span>${text}</span>
+
+                <span>
+                    ${text}
+                </span>
+
             `;
 
-            message.className = `message ${type}`;
+
+            message.className =
+                `message ${type}`;
+
         }
 
 
         /* =========================
-           FORMULÁRIO
-        ========================== */
+           MOSTRAR FORMULÁRIO
+        ========================= */
 
         function showForm() {
 
             recoveryReady = true;
 
-            loading.style.display = 'none';
+            loading.style.display =
+                'none';
+
 
             intro.textContent =
                 'Escolha uma nova senha para sua conta ApêWay.';
 
-            form.style.display = 'block';
+
+            form.style.display =
+                'block';
+
         }
 
 
         /* =========================
+           MOSTRAR / OCULTAR SENHA
+        ========================= */
+
+        document
+            .querySelectorAll('.password-toggle')
+            .forEach((toggle) => {
+
+                toggle.addEventListener(
+                    'click',
+                    () => {
+
+                        const targetId =
+                            toggle.dataset.target;
+
+                        const input =
+                            document.getElementById(targetId);
+
+                        const eyeOpen =
+                            toggle.querySelector('.eye-open');
+
+                        const eyeClosed =
+                            toggle.querySelector('.eye-closed');
+
+
+                        const isVisible =
+                            input.type === 'text';
+
+
+                        /* Alterna o tipo do campo */
+
+                        input.type =
+                            isVisible
+                                ? 'password'
+                                : 'text';
+
+
+                        /* Alterna os ícones */
+
+                        eyeOpen.style.display =
+                            isVisible
+                                ? 'block'
+                                : 'none';
+
+                        eyeClosed.style.display =
+                            isVisible
+                                ? 'none'
+                                : 'block';
+
+
+                        /* Atualiza acessibilidade */
+
+                        toggle.setAttribute(
+                            'aria-label',
+                            isVisible
+                                ? 'Mostrar senha'
+                                : 'Ocultar senha'
+                        );
+
+
+                        toggle.setAttribute(
+                            'aria-pressed',
+                            String(!isVisible)
+                        );
+
+                    }
+                );
+
+            });
+
+
+        /* =========================
            RECUPERAÇÃO
-        ========================== */
+        ========================= */
 
         async function initializeRecovery() {
 
@@ -692,143 +1068,223 @@
                 showForm();
 
                 return;
+
             }
 
 
-            loading.style.display = 'none';
+            loading.style.display =
+                'none';
+
 
             intro.textContent =
                 'Este link é inválido ou expirou. Solicite uma nova recuperação pelo aplicativo.';
 
+
             showMessage(
+
                 'Por segurança, cada link de recuperação só pode ser usado uma vez.',
+
                 'error'
+
             );
+
         }
 
 
         /* =========================
            AUTH STATE
-        ========================== */
+        ========================= */
 
         supabaseClient.auth.onAuthStateChange(
+
             (event, session) => {
 
                 if (
                     event === 'PASSWORD_RECOVERY' &&
                     session
                 ) {
+
                     showForm();
+
                 }
+
+            }
+
+        );
+
+
+        /* =========================
+           ENVIO DO FORMULÁRIO
+        ========================= */
+
+        form.addEventListener(
+            'submit',
+            async (event) => {
+
+                event.preventDefault();
+
+
+                const password =
+                    document.getElementById('password').value;
+
+
+                const confirmation =
+                    document.getElementById('confirmation').value;
+
+
+                /* =========================
+                   VALIDAR RECUPERAÇÃO
+                ========================= */
+
+                if (!recoveryReady) {
+
+                    showMessage(
+
+                        'A sessão de recuperação não foi validada. Solicite um novo link.',
+
+                        'error'
+
+                    );
+
+                    return;
+
+                }
+
+
+                /* =========================
+                   VALIDAR TAMANHO
+                ========================= */
+
+                if (password.length < 6) {
+
+                    showMessage(
+
+                        'A nova senha deve ter pelo menos 6 caracteres.',
+
+                        'error'
+
+                    );
+
+                    return;
+
+                }
+
+
+                /* =========================
+                   CONFIRMAR SENHA
+                ========================= */
+
+                if (password !== confirmation) {
+
+                    showMessage(
+
+                        'As senhas precisam ser iguais.',
+
+                        'error'
+
+                    );
+
+                    return;
+
+                }
+
+
+                /* =========================
+                   SALVANDO
+                ========================= */
+
+                submit.disabled =
+                    true;
+
+
+                submit.textContent =
+                    'Salvando...';
+
+
+                const { error } =
+                    await supabaseClient.auth.updateUser({
+
+                        password
+
+                    });
+
+
+                /* =========================
+                   ERRO
+                ========================= */
+
+                if (error) {
+
+                    showMessage(
+
+                        error.message,
+
+                        'error'
+
+                    );
+
+
+                    submit.disabled =
+                        false;
+
+
+                    submit.textContent =
+                        'Salvar nova senha';
+
+
+                    return;
+
+                }
+
+
+                /* =========================
+                   SUCESSO
+                ========================= */
+
+                form.style.display =
+                    'none';
+
+
+                intro.textContent =
+                    'Sua senha foi atualizada com sucesso.';
+
+
+                showMessage(
+
+                    'Senha atualizada. Abra o ApêWay e entre com sua nova senha.',
+
+                    'success'
+
+                );
 
             }
         );
 
 
         /* =========================
-           ENVIO DO FORMULÁRIO
-        ========================== */
-
-        form.addEventListener('submit', async (event) => {
-
-            event.preventDefault();
-
-
-            const password =
-                document.getElementById('password').value;
-
-            const confirmation =
-                document.getElementById('confirmation').value;
-
-
-            if (!recoveryReady) {
-
-                showMessage(
-                    'A sessão de recuperação não foi validada. Solicite um novo link.',
-                    'error'
-                );
-
-                return;
-            }
-
-
-            if (password.length < 6) {
-
-                showMessage(
-                    'A nova senha deve ter pelo menos 6 caracteres.',
-                    'error'
-                );
-
-                return;
-            }
-
-
-            if (password !== confirmation) {
-
-                showMessage(
-                    'As senhas precisam ser iguais.',
-                    'error'
-                );
-
-                return;
-            }
-
-
-            submit.disabled = true;
-            submit.textContent = 'Salvando...';
-
-
-            const { error } =
-                await supabaseClient.auth.updateUser({
-                    password
-                });
-
-
-            if (error) {
-
-                showMessage(
-                    error.message,
-                    'error'
-                );
-
-                submit.disabled = false;
-                submit.textContent =
-                    'Salvar nova senha';
-
-                return;
-            }
-
-
-            form.style.display = 'none';
-
-            intro.textContent =
-                'Sua senha foi atualizada com sucesso.';
-
-            showMessage(
-                'Senha atualizada. Abra o ApêWay e entre com sua nova senha.',
-                'success'
-            );
-
-        });
-
-
-        /* =========================
            INICIALIZAÇÃO
-        ========================== */
+        ========================= */
 
-        initializeRecovery().catch(() => {
+        initializeRecovery()
+            .catch(() => {
 
-            loading.style.display = 'none';
+                loading.style.display =
+                    'none';
 
-            intro.textContent =
-                'Não foi possível validar este link.';
 
-            showMessage(
-                'Solicite uma nova recuperação pelo aplicativo.',
-                'error'
-            );
+                intro.textContent =
+                    'Não foi possível validar este link.';
 
-        });
+
+                showMessage(
+
+                    'Solicite uma nova recuperação pelo aplicativo.',
+
+                    'error'
+
+                );
+
+            });
 
     </script>
 
