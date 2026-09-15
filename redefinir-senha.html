@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex">
+    <title>Redefinir senha — ApêWay</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; }
+        body {
+            align-items: center;
+            background: #f5f6fa;
+            color: #161616;
+            display: flex;
+            font-family: 'Roboto', sans-serif;
+            justify-content: center;
+            line-height: 1.5;
+            margin: 0;
+            min-height: 100vh;
+            padding: 24px;
+        }
+        main { max-width: 460px; width: 100%; }
+        .brand { color: #050062; display: block; font-size: 26px; font-weight: 700; margin-bottom: 26px; text-align: center; text-decoration: none; }
+        .card { background: #fff; border: 1px solid #e3e5ed; border-radius: 18px; box-shadow: 0 8px 24px rgba(5, 0, 98, .08); padding: 30px; }
+        h1 { color: #050062; font-size: 28px; line-height: 1.2; margin: 0 0 12px; }
+        p { color: #535966; margin: 0 0 24px; }
+        label { display: block; font-size: 14px; font-weight: 700; margin: 18px 0 8px; }
+        input { border: 1px solid #cdd2dd; border-radius: 10px; font: inherit; min-height: 50px; padding: 12px; width: 100%; }
+        input:focus { border-color: #050062; outline: 2px solid rgba(5, 0, 98, .12); }
+        button { background: #050062; border: 0; border-radius: 10px; color: #fff; cursor: pointer; font: inherit; font-weight: 700; margin-top: 24px; min-height: 50px; width: 100%; }
+        button:disabled { cursor: wait; opacity: .7; }
+        .message { border-radius: 10px; display: none; margin-top: 20px; padding: 12px; }
+        .message.error { background: #fff0f0; color: #a11212; display: block; }
+        .message.success { background: #eefaf1; color: #146c35; display: block; }
+        #form { display: none; }
+        .support { font-size: 14px; margin-top: 24px; text-align: center; }
+        .support a { color: #050062; font-weight: 700; }
+    </style>
+</head>
+<body>
+    <main>
+        <a class="brand" href="index.html">ApêWay</a>
+        <section class="card" aria-live="polite">
+            <h1>Redefinir senha</h1>
+            <p id="intro">Validando seu link de recuperação...</p>
+
+            <form id="form">
+                <label for="password">Nova senha</label>
+                <input id="password" type="password" autocomplete="new-password" minlength="6" required>
+
+                <label for="confirmation">Confirmar nova senha</label>
+                <input id="confirmation" type="password" autocomplete="new-password" minlength="6" required>
+
+                <button id="submit" type="submit">Salvar nova senha</button>
+            </form>
+
+            <div id="message" class="message" role="alert"></div>
+        </section>
+        <p class="support">Precisa de ajuda? <a href="mailto:contatoapeway@gmail.com">Fale com o suporte</a>.</p>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script>
+        const supabaseClient = window.supabase.createClient(
+            'https://krttopkvxlidjfbcbtnn.supabase.co',
+            'sb_publishable_-vzsUVzn6ghKO5x6wxL7LA_S_yKx1tg',
+            { auth: { autoRefreshToken: false, detectSessionInUrl: true, persistSession: false } }
+        );
+
+        const form = document.getElementById('form');
+        const intro = document.getElementById('intro');
+        const message = document.getElementById('message');
+        const submit = document.getElementById('submit');
+        let recoveryReady = false;
+
+        function showMessage(text, type) {
+            message.textContent = text;
+            message.className = `message ${type}`;
+        }
+
+        function showForm() {
+            recoveryReady = true;
+            intro.textContent = 'Escolha uma nova senha para sua conta.';
+            form.style.display = 'block';
+        }
+
+        async function initializeRecovery() {
+            const { data: { session }, error } = await supabaseClient.auth.getSession();
+            if (error) {
+                throw error;
+            }
+
+            if (session) {
+                showForm();
+                return;
+            }
+
+            intro.textContent = 'Este link é inválido ou expirou. Solicite uma nova recuperação pelo aplicativo.';
+            showMessage('Por segurança, cada link de recuperação só pode ser usado uma vez.', 'error');
+        }
+
+        supabaseClient.auth.onAuthStateChange((event, session) => {
+            if (event === 'PASSWORD_RECOVERY' && session) {
+                showForm();
+            }
+        });
+
+        form.addEventListener('submit', async (event) => {
+            event.preventDefault();
+            const password = document.getElementById('password').value;
+            const confirmation = document.getElementById('confirmation').value;
+
+            if (!recoveryReady) {
+                showMessage('A sessão de recuperação não foi validada. Solicite um novo link.', 'error');
+                return;
+            }
+
+            if (password.length < 6) {
+                showMessage('A nova senha deve ter pelo menos 6 caracteres.', 'error');
+                return;
+            }
+
+            if (password !== confirmation) {
+                showMessage('As senhas precisam ser iguais.', 'error');
+                return;
+            }
+
+            submit.disabled = true;
+            submit.textContent = 'Salvando...';
+            const { error } = await supabaseClient.auth.updateUser({ password });
+
+            if (error) {
+                showMessage(error.message, 'error');
+                submit.disabled = false;
+                submit.textContent = 'Salvar nova senha';
+                return;
+            }
+
+            form.style.display = 'none';
+            intro.textContent = 'Senha atualizada com sucesso.';
+            showMessage('Abra o ApêWay e entre com sua nova senha.', 'success');
+        });
+
+        initializeRecovery().catch(() => {
+            intro.textContent = 'Não foi possível validar este link.';
+            showMessage('Solicite uma nova recuperação pelo aplicativo.', 'error');
+        });
+    </script>
+</body>
+</html>
