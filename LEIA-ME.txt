@@ -1,0 +1,32 @@
+# ApêWay — site institucional e página para anunciantes
+
+## Estrutura
+- `index.html`: página institucional
+- `para-anunciantes/index.html`: página comercial em `/para-anunciantes/`
+- `assets/site.css`: identidade visual responsiva
+- `assets/site.js`: menu mobile e pequenos comportamentos
+- `assets/`: capturas reais do aplicativo enviadas para esta conversa
+
+## Publicação
+Copie o conteúdo desta pasta para a raiz do repositório GitHub Pages `APEWAY-SITE`, preservando os arquivos legais já existentes:
+- `privacidade.html`
+- `termos.html`
+- `exclusao-de-conta.html`
+- `redefinir-senha.html`
+
+Não apague nem substitua os documentos legais existentes por este pacote.
+
+## Antes de publicar
+1. Confirme que os valores e a composição dos combos continuam vigentes.
+2. Revise as condições de atendimento/deslocamento do serviço de produção.
+3. Confirme que o PIX será orientado manualmente pela equipe.
+4. Confira os documentos legais: alguns arquivos existentes podem ainda conter o WhatsApp antigo.
+5. O botão "Conhecer o aplicativo" não aponta para Google Play porque o link público específico do app não foi fornecido.
+6. As capturas de tela incluem imóveis fictícios de demonstração; o aviso correspondente foi mantido no site.
+
+## WhatsApp
+O número utilizado nos novos contatos comerciais é `+55 63 99132-2124`.
+
+
+## Correção desta versão
+Os caminhos de CSS, JavaScript, imagens e links internos foram ajustados para caminhos relativos. Isso evita que a prévia abra a página sem estilo ou sem imagens quando o site é servido dentro de uma pasta/visualizador. No domínio apway.com.br, a estrutura também funciona na raiz do GitHub Pages.

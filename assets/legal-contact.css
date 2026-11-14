@@ -1,0 +1,27 @@
+/* Apresentação única dos contatos nos três documentos legais. */
+main .contact-box{
+ display:grid;gap:16px;
+ margin:28px 0 40px;padding:28px;
+ border:1px solid rgba(255,255,255,.12);border-radius:22px;
+ background:#050062;color:#fff;
+}
+main .contact-box h2{
+ margin:0 0 4px;color:#fff;
+ font-size:24px;font-weight:700;line-height:1.3;
+}
+main .contact-box p{
+ margin:0;color:#eee;font-size:16px;line-height:1.7;
+ overflow-wrap:anywhere;
+}
+main .contact-box strong{font-weight:700;color:#fff}
+main .contact-box a{
+ color:#fff;text-decoration:underline;text-underline-offset:3px;
+ text-decoration-color:rgba(255,255,255,.45);
+}
+main .contact-box a:hover{text-decoration-color:#fff}
+main .contact-box a:focus-visible{outline:2px solid #fff;outline-offset:4px;border-radius:2px}
+@media(max-width:700px){
+ main .contact-box{padding:24px;gap:16px}
+ main .contact-box h2{font-size:21px}
+ main .contact-box p{font-size:15px}
+}

@@ -1,573 +1,120 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>ApêWay — O imóvel que se encaixa com você.</title>
-
-    <meta
-        name="description"
-        content="ApêWay — plataforma para descobrir imóveis e conectar pessoas às opções que combinam com elas."
-    >
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <link
-        href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
-        rel="stylesheet"
-    >
-
-    <style>
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: 'Roboto', sans-serif;
-            background: #ffffff;
-            color: #111111;
-            line-height: 1.6;
-        }
-
-        a {
-            color: inherit;
-            text-decoration: none;
-        }
-
-        /* =========================
-           HEADER
-        ========================= */
-
-        header {
-            width: 100%;
-            border-bottom: 1px solid #eeeeee;
-            background: #ffffff;
-        }
-
-        .header-container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 18px 24px;
-
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 20px;
-        }
-
-        .logo {
-            font-size: 24px;
-            font-weight: 700;
-            color: #050062;
-            letter-spacing: -0.5px;
-        }
-
-        nav {
-            display: flex;
-            gap: 22px;
-            align-items: center;
-        }
-
-        nav a {
-            font-size: 14px;
-            font-weight: 500;
-            color: #333333;
-            transition: 0.2s;
-        }
-
-        nav a:hover {
-            color: #0059FF;
-        }
-
-        /* =========================
-           HERO
-        ========================= */
-
-        .hero {
-            background: #050062;
-            color: #ffffff;
-        }
-
-        .hero-container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 90px 24px;
-
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-        }
-
-        .hero h1 {
-            max-width: 720px;
-            font-size: 44px;
-            line-height: 1.15;
-            font-weight: 700;
-            letter-spacing: -1px;
-            margin-bottom: 20px;
-        }
-
-        .hero p {
-            max-width: 620px;
-            font-size: 18px;
-            color: #eeeeee;
-            margin-bottom: 32px;
-        }
-
-        .hero-button {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-
-            background: #ffffff;
-            color: #050062;
-
-            padding: 14px 24px;
-            border-radius: 12px;
-
-            font-size: 16px;
-            font-weight: 500;
-
-            transition: 0.2s;
-        }
-
-        .hero-button:hover {
-            transform: translateY(-1px);
-        }
-
-        /* =========================
-           DOCUMENTOS
-        ========================= */
-
-        .documents {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 70px 24px;
-        }
-
-        .documents-header {
-            margin-bottom: 32px;
-        }
-
-        .documents h2 {
-            font-size: 28px;
-            font-weight: 700;
-            color: #050062;
-            margin-bottom: 8px;
-        }
-
-        .documents-header p {
-            font-size: 16px;
-            color: #666666;
-        }
-
-        .documents-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 18px;
-        }
-
-        .document-card {
-            border: 1px solid #e8e8e8;
-            border-radius: 16px;
-            padding: 26px;
-            background: #ffffff;
-
-            transition: 0.2s;
-        }
-
-        .document-card:hover {
-            border-color: #0059FF;
-            transform: translateY(-2px);
-        }
-
-        .document-icon {
-            width: 44px;
-            height: 44px;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            border-radius: 12px;
-            background: #f1f4ff;
-            color: #0059FF;
-
-            font-size: 20px;
-
-            margin-bottom: 18px;
-        }
-
-        .document-card h3 {
-            font-size: 20px;
-            margin-bottom: 8px;
-            color: #111111;
-        }
-
-        .document-card p {
-            font-size: 14px;
-            color: #666666;
-            margin-bottom: 18px;
-        }
-
-        .document-link {
-            color: #0059FF;
-            font-size: 14px;
-            font-weight: 500;
-        }
-
-        /* =========================
-           SOBRE
-        ========================= */
-
-        .about {
-            background: #f8f8f8;
-        }
-
-        .about-container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 70px 24px;
-        }
-
-        .about h2 {
-            color: #050062;
-            font-size: 28px;
-            margin-bottom: 16px;
-        }
-
-        .about p {
-            max-width: 760px;
-            font-size: 16px;
-            color: #444444;
-        }
-
-        /* =========================
-           FOOTER
-        ========================= */
-
-        footer {
-            background: #050062;
-            color: #ffffff;
-        }
-
-        .footer-container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 40px 24px;
-
-            display: flex;
-            justify-content: space-between;
-            gap: 30px;
-        }
-
-        .footer-brand {
-            max-width: 400px;
-        }
-
-        .footer-brand h3 {
-            font-size: 22px;
-            margin-bottom: 8px;
-        }
-
-        .footer-brand p {
-            font-size: 14px;
-            color: #dddddd;
-        }
-
-        .footer-links {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-
-        .footer-links a {
-            font-size: 14px;
-            color: #ffffff;
-        }
-
-        .footer-links a:hover {
-            color: #ffffff;
-            text-decoration: underline;
-        }
-
-        .copyright {
-            border-top: 1px solid rgba(255,255,255,0.15);
-            padding: 18px 24px;
-            text-align: center;
-            font-size: 12px;
-            color: #cccccc;
-        }
-
-        /* =========================
-           MOBILE
-        ========================= */
-
-        @media (max-width: 700px) {
-
-            nav {
-                display: none;
-            }
-
-            .hero-container {
-                padding: 70px 24px;
-            }
-
-            .hero h1 {
-                font-size: 34px;
-            }
-
-            .hero p {
-                font-size: 16px;
-            }
-
-            .documents-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .footer-container {
-                flex-direction: column;
-            }
-        }
-
-    </style>
-</head>
-
-<body>
-
-    <!-- HEADER -->
-
-    <header>
-
-        <div class="header-container">
-
-            <a href="index.html" class="logo">
-                ApêWay
-            </a>
-
-            <nav>
-                <a href="#sobre">Sobre</a>
-                <a href="#documentos">Documentos</a>
-                <a href="privacidade.html">Privacidade</a>
-                <a href="termos.html">Termos</a>
-            </nav>
-
-        </div>
-
-    </header>
-
-
-    <!-- HERO -->
-
-    <main>
-
-        <section class="hero">
-
-            <div class="hero-container">
-
-                <h1>
-                    O imóvel que se encaixa com você.
-                </h1>
-
-                <p>
-                    O ApêWay conecta pessoas a imóveis de forma
-                    simples, moderna e organizada.
-                </p>
-
-                <a
-                    href="#documentos"
-                    class="hero-button"
-                >
-                    Conheça o ApêWay
-                </a>
-
-            </div>
-
-        </section>
-
-
-        <!-- DOCUMENTOS -->
-
-        <section
-            class="documents"
-            id="documentos"
-        >
-
-            <div class="documents-header">
-
-                <h2>
-                    Informações importantes
-                </h2>
-
-                <p>
-                    Consulte os documentos e informações oficiais do ApêWay.
-                </p>
-
-            </div>
-
-
-            <div class="documents-grid">
-
-                <a
-                    href="privacidade.html"
-                    class="document-card"
-                >
-
-                    <div class="document-icon">
-                        🔒
-                    </div>
-
-                    <h3>
-                        Política de Privacidade
-                    </h3>
-
-                    <p>
-                        Saiba como tratamos os dados pessoais
-                        utilizados pela plataforma.
-                    </p>
-
-                    <span class="document-link">
-                        Ler política →
-                    </span>
-
-                </a>
-
-
-                <a
-                    href="termos.html"
-                    class="document-card"
-                >
-
-                    <div class="document-icon">
-                        ✓
-                    </div>
-
-                    <h3>
-                        Termos de Uso
-                    </h3>
-
-                    <p>
-                        Conheça as regras e condições para utilização
-                        do ApêWay.
-                    </p>
-
-                    <span class="document-link">
-                        Ler termos →
-                    </span>
-
-                </a>
-
-
-                <a
-                    href="exclusao-de-conta.html"
-                    class="document-card"
-                >
-
-                    <div class="document-icon">
-                        ×
-                    </div>
-
-                    <h3>
-                        Exclusão de Conta
-                    </h3>
-
-                    <p>
-                        Consulte as informações para solicitar
-                        a exclusão da sua conta.
-                    </p>
-
-                    <span class="document-link">
-                        Solicitar exclusão →
-                    </span>
-
-                </a>
-
-            </div>
-
-        </section>
-
-
-        <!-- SOBRE -->
-
-        <section
-            class="about"
-            id="sobre"
-        >
-
-            <div class="about-container">
-
-                <h2>
-                    Sobre o ApêWay
-                </h2>
-
-                <p>
-                    O ApêWay é uma plataforma voltada à divulgação
-                    e descoberta de imóveis, facilitando o contato
-                    entre pessoas interessadas em encontrar ou
-                    anunciar uma oportunidade imobiliária.
-                </p>
-
-            </div>
-
-        </section>
-
-    </main>
-
-
-    <!-- FOOTER -->
-
-    <footer>
-
-        <div class="footer-container">
-
-            <div class="footer-brand">
-
-                <h3>
-                    ApêWay
-                </h3>
-
-                <p>
-                    O imóvel que se encaixa com você.
-                </p>
-
-            </div>
-
-
-            <div class="footer-links">
-
-                <a href="privacidade.html">
-                    Política de Privacidade
-                </a>
-
-                <a href="termos.html">
-                    Termos de Uso
-                </a>
-
-                <a href="exclusao-de-conta.html">
-                    Exclusão de Conta
-                </a>
-
-                <a href="mailto:contatoapeway@gmail.com">
-                    contatoapeway@gmail.com
-                </a>
-
-            </div>
-
-        </div>
-
-
-        <div class="copyright">
-
-            © 2026 ApêWay. Todos os direitos reservados.
-
-        </div>
-
-    </footer>
-
-</body>
-</html>
+<!doctype html>
+<html lang="pt-BR"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ApêWay — O imóvel que se encaixa com você</title>
+<meta name="description" content="Explore imóveis para alugar e conheça uma forma simples e organizada de anunciar com o ApêWay.">
+<meta name="theme-color" content="#050062"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet"><link rel="stylesheet" href="assets/site.css">
+</head><body>
+
+<header class="site-header">
+ <div class="container header-inner">
+  <a class="brand" href="./" aria-label="ApêWay, página inicial"><img class="brand-logo" src="assets/apeway-logo.png" width="34" height="34" alt=""><span>ApêWay</span></a>
+  <button class="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false">☰</button>
+  <nav class="nav" aria-label="Navegação principal">
+   <a href="#como-funciona">Como funciona</a>
+   <a href="#para-quem-procura">Para quem procura</a>
+   <a href="para-anunciantes/">Para anunciantes</a>
+   <a href="#sobre">Sobre</a>
+   <a class="btn btn-primary" href="https://play.google.com/store/apps" target="_blank" rel="noopener">Baixar o ApêWay</a>
+  </nav>
+ </div>
+</header>
+<main>
+<section class="hero"><div class="container hero-grid">
+ <div><span class="eyebrow">Uma nova forma de encontrar e anunciar imóveis</span>
+  <h1>O imóvel que se encaixa com você.</h1>
+  <p>Encontrar um imóvel para alugar não precisa ser complicado. Explore opções, compare informações e conheça melhor cada imóvel em um só lugar.</p>
+  <div class="hero-actions"><a class="btn btn-white" href="#experiencia">Conhecer o aplicativo <span>↗</span></a><a class="btn btn-outline" href="para-anunciantes/">Quero anunciar meu imóvel</a></div>
+  <div class="hero-note">Uma experiência simples, organizada e pensada para aproximar pessoas e imóveis.</div>
+ </div>
+ <figure class="advertiser-preview">
+  <div class="phone-device">
+   <span class="phone-speaker" aria-hidden="true"></span>
+   <div class="phone-display"><img src="assets/app-explorar.jpeg" width="720" height="1600" alt="Captura real da tela Explorar do aplicativo ApêWay" fetchpriority="high"></div>
+  </div>
+  <figcaption>Explore. Compare. Encontre.</figcaption>
+ </figure>
+</div></section>
+<div class="trust-strip"><div class="container trust-inner"><span>⌕ <b>Busca de imóveis</b></span><span>♡ <b>Favoritos</b></span><span>⌖ <b>Localização aproximada</b></span><span>▤ <b>Detalhes organizados</b></span></div></div>
+<section class="section" id="como-funciona"><div class="container">
+ <div class="section-head"><span class="eyebrow">Como funciona</span><h2>Tudo começa com o imóvel certo.</h2><p>O ApêWay conecta pessoas que procuram imóveis para alugar a anunciantes que desejam divulgar suas propriedades.</p></div>
+ <div class="grid-2">
+  <article class="panel"><div class="feature-icon">⌕</div><h3>Para quem procura</h3><p>Explore imóveis, confira informações e entre em contato com o anunciante.</p>
+   <div class="steps"><div class="step"><span class="step-num">1</span><div><strong>Explore</strong><p>Encontre imóveis e navegue pelas opções apresentadas.</p></div></div><div class="step"><span class="step-num">2</span><div><strong>Compare</strong><p>Confira fotos, localização aproximada, valores e características.</p></div></div><div class="step"><span class="step-num">3</span><div><strong>Conheça</strong><p>Acesse a página do imóvel e consulte os detalhes disponíveis.</p></div></div><div class="step"><span class="step-num">4</span><div><strong>Entre em contato</strong><p>Use as opções disponíveis para conversar sobre o imóvel.</p></div></div></div>
+  </article>
+  <article class="panel"><div class="feature-icon">⌂</div><h3>Para quem anuncia</h3><p>Escolha a forma de divulgação que combina com sua necessidade.</p>
+   <div class="steps"><div class="step"><span class="step-num">1</span><div><strong>Escolha sua opção</strong><p>Defina como deseja preparar e divulgar o imóvel.</p></div></div><div class="step"><span class="step-num">2</span><div><strong>Envie as informações</strong><p>Compartilhe os dados e as fotografias necessárias.</p></div></div><div class="step"><span class="step-num">3</span><div><strong>Organize o anúncio</strong><p>O conteúdo é preparado para apresentação na plataforma.</p></div></div><div class="step"><span class="step-num">4</span><div><strong>Receba interessados</strong><p>As pessoas interessadas podem entrar em contato com o anunciante.</p></div></div></div>
+  </article>
+ </div>
+</div></section>
+<section class="section soft" id="para-quem-procura"><div class="container">
+ <div class="section-head"><span class="eyebrow">Para quem procura</span><h2>Seu próximo endereço pode estar aqui.</h2><p>Informações importantes para ajudar você a conhecer e comparar as opções disponíveis.</p></div>
+ <div class="grid-3">
+  <article class="feature"><div class="feature-icon">⌕</div><h3>Busca e filtros</h3><p>Navegue pelos imóveis e utilize os recursos de busca disponíveis.</p></article>
+  <article class="feature"><div class="feature-icon">♡</div><h3>Seus favoritos</h3><p>Guarde imóveis de interesse para consultar novamente.</p></article>
+  <article class="feature"><div class="feature-icon">▤</div><h3>Detalhes do imóvel</h3><p>Consulte fotos, características, comodidades e informações de valores.</p></article>
+  <article class="feature"><div class="feature-icon">⌖</div><h3>Localização</h3><p>Veja a localização aproximada e utilize a opção de abrir a rota no GPS.</p></article>
+  <article class="feature"><div class="feature-icon">R$</div><h3>Valores detalhados</h3><p>Confira o aluguel e as despesas informadas no anúncio.</p></article>
+  <article class="feature"><div class="feature-icon">↗</div><h3>Contato</h3><p>Acesse as opções disponíveis para demonstrar interesse no imóvel.</p></article>
+ </div>
+</div></section>
+<section class="section" id="experiencia"><div class="container">
+ <div class="section-head"><span class="eyebrow">Conheça a experiência</span><h2>Veja o ApêWay por dentro.</h2><p>As imagens abaixo são capturas reais do aplicativo e mostram telas e recursos da experiência atual.</p></div>
+ <div class="screen-grid phone-gallery">
+  <figure class="gallery-phone"><div class="phone-device"><span class="phone-speaker" aria-hidden="true"></span><div class="phone-display"><img src="assets/demo-explorar.jpeg" width="720" height="1600" loading="lazy" alt="Tela de busca e listagem de imóveis no ApêWay"></div></div><figcaption>Explore e encontre opções</figcaption></figure>
+  <figure class="gallery-phone"><div class="phone-device"><span class="phone-speaker" aria-hidden="true"></span><div class="phone-display"><img src="assets/demo-detalhes.jpeg" width="720" height="1600" loading="lazy" alt="Página de um imóvel no aplicativo ApêWay"></div></div><figcaption>Conheça cada imóvel</figcaption></figure>
+  <figure class="gallery-phone"><div class="phone-device"><span class="phone-speaker" aria-hidden="true"></span><div class="phone-display"><img src="assets/demo-favoritos.jpeg" width="720" height="1600" loading="lazy" alt="Tela de imóveis favoritos no ApêWay"></div></div><figcaption>Salve seus favoritos</figcaption></figure>
+ </div>
+ <div class="demo-warning"><strong>Nota:</strong> os imóveis exibidos nas capturas são dados fictícios utilizados exclusivamente para demonstração das funcionalidades do aplicativo. Não representam ofertas reais disponíveis para locação.</div>
+</div></section>
+<section class="section soft"><div class="container">
+ <div class="section-head"><span class="eyebrow">Para anunciantes</span><h2>Seu imóvel merece ser encontrado.</h2><p>Divulgue sua propriedade com informações organizadas e uma apresentação clara para quem está procurando um lugar para alugar.</p></div>
+ <div class="grid-3">
+  <article class="feature"><div class="feature-icon">▧</div><h3>Você envia, nós organizamos</h3><p>Envie fotos e informações para a organização e publicação do anúncio.</p></article>
+  <article class="feature"><div class="feature-icon">◎</div><h3>Produção do anúncio</h3><p>Contrate o serviço de coleta de informações, fotografias e preparação do anúncio.</p></article>
+  <article class="feature"><div class="feature-icon">＋</div><h3>Opções de divulgação</h3><p>Conheça planos e combos disponíveis para diferentes quantidades de imóveis.</p></article>
+ </div>
+ <div style="margin-top:28px"><a class="btn btn-primary" href="para-anunciantes/">Conhecer planos e opções de anúncio ↗</a></div>
+</div></section>
+<section class="section" id="sobre"><div class="container grid-2" style="align-items:center">
+ <div><span class="eyebrow">Sobre o ApêWay</span><div class="section-head"><h2>Uma plataforma criada para aproximar pessoas e imóveis.</h2><p>O ApêWay é uma plataforma digital voltada à divulgação e à descoberta de imóveis para aluguel. Nossa proposta é tornar o acesso às informações mais simples e organizado, facilitando a aproximação entre quem procura e quem anuncia.</p></div><p style="color:var(--muted)">Estamos começando por Araguaína, Tocantins, com o propósito de construir uma plataforma cada vez mais útil para o mercado imobiliário.</p></div>
+ <div class="panel"><div class="feature-icon">⌂</div><h3>ApêWay</h3><p>O imóvel que se encaixa com você.</p><p style="margin-top:16px">Uma nova forma de encontrar e anunciar imóveis.</p></div>
+</div></section>
+<section class="section soft"><div class="container">
+ <div class="cta-band"><div><h2>O próximo passo começa com o ApêWay.</h2><p>Explore a experiência ou conheça as opções para anunciar seu imóvel.</p></div><a class="btn btn-white" href="para-anunciantes/">Quero anunciar meu imóvel ↗</a></div>
+</div></section>
+<section class="section"><div class="container"><div class="section-head"><span class="eyebrow">Transparência</span><h2>Informações oficiais</h2><p>Consulte os documentos e as condições de utilização do ApêWay.</p></div>
+ <div class="legal-grid"><a class="legal-link" href="privacidade.html"><b>Política de Privacidade</b><span>Tratamento de dados pessoais.</span></a><a class="legal-link" href="termos.html"><b>Termos de Uso</b><span>Regras e condições da plataforma.</span></a><a class="legal-link" href="exclusao-de-conta.html"><b>Exclusão de Conta</b><span>Como solicitar a exclusão da conta.</span></a></div>
+</div></section>
+</main>
+
+<footer><div class="container">
+ <div class="footer-grid">
+  <div class="footer-brand"><a class="brand" href="./" style="color:#fff"><img class="brand-logo" src="assets/apeway-logo.png" width="34" height="34" alt=""><span>ApêWay</span></a>
+   <p>O imóvel que se encaixa com você.<br>Uma nova forma de encontrar e anunciar imóveis para aluguel.</p>
+
+   <div class="footer-social">
+    <div class="footer-title">Redes sociais</div>
+    <div class="social-links">
+     <a href="https://www.instagram.com/apewaybr" target="_blank" rel="noopener noreferrer" aria-label="Instagram do ApêWay (abre em nova aba)">
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true" focusable="false"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+     </a>
+     <a href="https://www.facebook.com/share/1Hi78SnCVA/" target="_blank" rel="noopener noreferrer" aria-label="Facebook do ApêWay (abre em nova aba)">
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true" focusable="false"><path d="M13.5 22v-8h2.8l.5-3.4h-3.3V8.4c0-1 .3-1.7 1.7-1.7H17v-3a23 23 0 0 0-2.6-.2c-2.6 0-4.3 1.6-4.3 4.5v2.6H7.2V14h2.9v8z"/></svg>
+     </a>
+    </div>
+   </div>
+  </div>
+  <div><div class="footer-title">Navegue</div><div class="footer-links">
+   <a href="#como-funciona">Como funciona</a><a href="#para-quem-procura">Para quem procura</a><a href="para-anunciantes/">Para anunciantes</a><a href="#sobre">Sobre o ApêWay</a>
+  </div></div>
+  <div><div class="footer-title">Informações e contato</div><div class="footer-links">
+   <a href="privacidade.html">Política de Privacidade</a><a href="termos.html">Termos de Uso</a><a href="exclusao-de-conta.html">Exclusão de Conta</a>
+   <a href="mailto:contatoapeway@gmail.com">contatoapeway@gmail.com</a><a href="https://wa.me/5563991322124" target="_blank" rel="noopener">WhatsApp: (63) 99132-2124</a>
+  </div></div>
+ </div><div class="copyright">© <span data-year>2026</span> ApêWay. Todos os direitos reservados.</div>
+</div></footer>
+<a class="floating-wa" href="https://wa.me/5563991322124?text=Ol%C3%A1%2C%20Ap%C3%AAWay%21%20Gostaria%20de%20tirar%20uma%20d%C3%BAvida." target="_blank" rel="noopener" aria-label="Falar com o ApêWay pelo WhatsApp">WhatsApp ↗</a>
+<script src="assets/site.js" defer></script>
+</body></html>

@@ -1,0 +1,40 @@
+/* Cabeçalho compartilhado dos documentos; estilos restritos a esta área. */
+.legal-site-header{
+ position:sticky;top:0;z-index:50;
+ background:rgba(255,255,255,.94);
+ backdrop-filter:blur(14px);
+ border-bottom:1px solid rgba(5,0,98,.08);
+}
+.legal-site-header .header-container{
+ width:min(1160px,calc(100% - 44px));max-width:none;
+ min-height:76px;margin:0 auto;padding:12px 0;gap:20px;
+}
+.legal-site-header .logo{
+ display:inline-flex;align-items:center;gap:10px;
+ color:#050062;font-size:1.55rem;font-weight:700;
+ letter-spacing:-.06em;line-height:1.2;text-decoration:none;
+}
+.legal-site-header .logo img{
+ display:block;width:34px;height:34px;flex:0 0 34px;
+ border-radius:11px;object-fit:contain;
+}
+.legal-site-header .back-link{
+ display:inline-flex;align-items:center;justify-content:center;gap:8px;
+ min-height:44px;padding:10px 18px;border:1px solid transparent;
+ border-radius:12px;background:#0059ff;color:#fff;
+ font-size:.93rem;font-weight:700;line-height:1.4;text-decoration:none;
+ box-shadow:0 9px 24px rgba(0,89,255,.2);
+ transition:background .2s ease;
+}
+.legal-site-header .back-link:hover{background:#0049d6}
+.legal-site-header a:focus-visible{outline:3px solid #0059ff;outline-offset:4px}
+@media(min-width:1200px){
+ .legal-site-header .header-container{width:calc(100% - 96px)}
+}
+@media(max-width:700px){
+ .legal-site-header .header-container{width:calc(100% - 34px);min-height:68px;padding:10px 0;gap:12px}
+ .legal-site-header .back-link{padding:10px 14px}
+}
+@media(prefers-reduced-motion:reduce){
+ .legal-site-header .back-link{transition:none}
+}
